@@ -11,7 +11,6 @@ const appRoutes: Routes = [
   { path: "blog", component: BlogComponent },
   { path: "pictures", component: FoodPicturesComponent },
   { path: "recipes", component: RecipeComponent }
-
 ]
 
 @NgModule({

@@ -32,5 +32,6 @@
 [] CRUD recipes  
 [] post pictures from phone  
 [] store picture in firebase bucket  
+[] upload photos from phone  
 
 ---
