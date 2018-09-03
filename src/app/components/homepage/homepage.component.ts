@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomepageComponent implements OnInit {
-
-  config: Config
-
+  isModalActive: boolean;
   constructor() { }
 
   ngOnInit() {

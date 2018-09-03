@@ -12,7 +12,6 @@ import { BlogComponent } from './components/blog/blog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FoodPicturesComponent } from './components/food-pictures/food-pictures.component';
-import { GiphyService } from './services/giphy.services.ts';
 
 
 
