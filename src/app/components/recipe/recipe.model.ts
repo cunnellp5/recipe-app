@@ -4,18 +4,21 @@ export class Recipe {
   public description: string;
   public date: string;
   public imagePath: string;
+  public id: number;
 
   constructor(
       title: string,
       short: string,
       description: string,
       date: string,
-      imagePath: string
+      imagePath: string,
+      id: number
   ) {
     this.title = title;
     this.short = short;
     this.description = description;
     this.date = date;
     this.imagePath = imagePath;
+    this.id = id;
   }
 }

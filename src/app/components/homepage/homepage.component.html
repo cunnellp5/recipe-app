@@ -5,7 +5,11 @@
         Recipes
       </h1>
       <h2 class="subtitle">
-        5 michelin star food site
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
       </h2>
     </div>
   </div>
@@ -25,5 +29,26 @@
         <img src="https://energyflows.org/wp-content/uploads/2017/11/5-minute-journal-main-pic.jpg">
       </figure>
     </a>
+  </div>
+</div>
+
+<div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
+  <div class="modal-background" (click)="toggleModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Happy Birthday Laura-Jeanne 💝</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      Happy Birthday! 🎁🎂🎉 i been working on this website for you for a few days, its not complete at all but i'm working on creating a backend for you to put whatever content you want in here. The idea is to supposed to be an online tool for you to log your recipes, take pictures and type notes real quick. If you click around so far all you'll see is sort of scaffolding and the general lay out, i'm working on the functionality part, its kind of hard so it may take a minute. ✨💖
+      <iframe src="https://giphy.com/embed/3o6gbbbGbpBZCRm15C" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/birthday-happy-birthday-hump-humpy-birfday-3o6gbbbGbpBZCRm15C"></a></p>
+      I hope you have a great day today, i miss you! i cant belive youre 28 already!? May your heart be filled with happiness and goodness I wish i could give you a big hug right now.
+      I love you <br>- Philip
+    </section>
+    <footer class="modal-card-foot">
+      <!-- <button class="button is-success">Save changes</button> -->
+      <button class="button" (click)="toggleModal()">Cancel</button>
+    </footer>
   </div>
 </div>

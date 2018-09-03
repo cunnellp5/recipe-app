@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -11,6 +12,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FoodPicturesComponent } from './components/food-pictures/food-pictures.component';
+import { GiphyService } from './services/giphy.services.ts';
+
 
 
 @NgModule({
@@ -25,8 +28,9 @@ import { FoodPicturesComponent } from './components/food-pictures/food-pictures.
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    RecipeModule
+    RecipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

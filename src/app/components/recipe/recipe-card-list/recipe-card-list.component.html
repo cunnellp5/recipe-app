@@ -4,7 +4,7 @@
     <div
       class="container column is-one-quarter"
       *ngFor="let recipe of recipes">
-      <a (click)="onSelected(recipe)">
+      <a routerLink="/recipes/{{recipe.title}}">
         <div class="card is-centered">
           <div class="card-content">
             <div class="media">

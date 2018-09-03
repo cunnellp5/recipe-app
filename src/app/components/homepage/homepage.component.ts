@@ -5,11 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
+
 export class HomepageComponent implements OnInit {
+
+  config: Config
 
   constructor() { }
 
   ngOnInit() {
+    this.isModalActive = !this.isModalActive;
+  }
+
+  toggleModal() {
+    this.isModalActive = !this.isModalActive;
   }
 
 }
