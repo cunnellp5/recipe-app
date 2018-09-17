@@ -7,11 +7,11 @@
 [✓] recipe list  
 [] detail view  
 [] create journal component and nested components  
-[] list view  
-[] detailed view  
+[✓] list view  
+[✓] detailed view  
 [] picture component  
 [] delete single recipes  
-[] create id routes for single recipe detail
+[✓] create id routes for single recipe detail
 
 
 
@@ -23,13 +23,13 @@
 
 
 ##### Firebase Stuff:
-[] add real data  
+[✓] add real data  
 [] create user  
 [] create sign in  
 [] create form for recipes  
 [] create auth and firebase  
-[] CRUD journal stuff  
-[] CRUD recipes  
+[] [] [] [] CRUD journal stuff  
+[✓] [✓] [] [] CRUD recipes  
 [] post pictures from phone  
 [] store picture in firebase bucket  
 [] upload photos from phone  
