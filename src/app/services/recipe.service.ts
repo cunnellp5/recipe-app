@@ -1,43 +1,45 @@
-import { Injectable, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import 'rxjs';
 import { Recipe } from '../components/recipe/recipe.model';
 
 @Injectable()
-export class RecipeService implements OnInit {
+export class RecipeService {
   recipes: any;
   addMe: Recipe;
   recipeRef: any;
 
-  constructor(
-    private db: AngularFirestore
-  ) {}
-
-  ngOnInit() {
+  constructor(private db: AngularFirestore) {
+    this.recipes = this.db.collection('recipeDetails').valueChanges()
     this.recipeRef = this.db.collection('recipeDetails');
-    this.recipes = this.db.collection('recipeDetails').valueChanges();
   }
 
   getRecipes(): any {
-    this.recipes.subscribe((res) => console.log(res));
+    this.recipes.subscribe((res) => {
+      console.log(res)
+      res.forEach((doc, i) => {
+          console.log(`${doc.id} => ${doc.title}`);
+      });
+    });
     return this.recipes;
   }
 
-  createRecipe(): void {
-    this.addMe = {
-      title: 'test',
-      short: 'test',
-      description: 'test',
-      date: 'test',
-      imagePath: 'test',
-      id: 2
-    }
-    this.recipeRef.add(this.addMe);
+  // createRecipe(): void {
+  //   this.addMe = {
+  //     title: 'test2',
+  //     short: 'test',
+  //     description: 'test',
+  //     date: 'test',
+  //     imagePath: 'test',
+  //     id: 3
+  //   }
+  //   this.recipeRef.add(this.addMe);
+  // }
+
+  deleteOne(a) {
+
   }
 
-  private handleError(error) {
-    console.log(error);
-  }
   // updateCustomer(key: string, value: any): void {
   //   this.customersRef.update(key, value).catch(error => this.handleError(error));
   // }
@@ -52,5 +54,9 @@ export class RecipeService implements OnInit {
   //   this.customersRef.remove().catch(error => this.handleError(error));
   // }
   //
+
+  private handleError(error) {
+    console.log(error);
+  }
 
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
+
 export class RecipeComponent implements OnInit {
   selectedRecipe: Recipe;
   recipes: Observable<Recipe[]>;
@@ -18,6 +19,7 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
+    console.log(this.recipeService.getRecipes())
   }
 
 }

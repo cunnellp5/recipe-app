@@ -8,7 +8,6 @@
 [] detail view  
 [] create journal component and nested components  
 [✓] list view  
-[✓] detailed view  
 [] picture component  
 [] delete single recipes  
 [✓] create id routes for single recipe detail
