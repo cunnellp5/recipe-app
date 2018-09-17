@@ -1,23 +1,19 @@
-import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
+import { Injectable, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import 'rxjs';
-import { Observable } from 'rxjs';
 import { Recipe } from '../components/recipe/recipe.model';
 
 @Injectable()
-export class RecipeService {
+export class RecipeService implements OnInit {
   recipes: any;
   addMe: Recipe;
   recipeRef: any;
 
   constructor(
-    private db: AngularFirestore,
-    // private _afs: AngularFirestoreCollection
-  ) {
+    private db: AngularFirestore
+  ) {}
+
+  ngOnInit() {
     this.recipeRef = this.db.collection('recipeDetails');
     this.recipes = this.db.collection('recipeDetails').valueChanges();
   }

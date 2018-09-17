@@ -11,10 +11,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule
-    // RecipeComponent
   ],
   exports: [
-    // RecipeComponent
   ],
   declarations: [
     RecipeComponent,
