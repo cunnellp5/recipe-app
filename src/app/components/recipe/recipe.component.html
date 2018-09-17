@@ -10,6 +10,12 @@
     </div>
   </div>
 </section>
+
+<ul>
+  <li class="text" *ngFor="let recipe of recipes | async">
+    {{recipe.short}}
+  </li>
+</ul>
 <!-- search below -->
 <!-- <div *ngIf="!selectedRecipe" class="container panel-block">
   <p class="control has-icons-left">
@@ -20,9 +26,9 @@
   </p>
 </div> -->
 
-
 <app-recipe-card-list
   (recipeSelected)="selectedRecipe = $event"
+  [recipes]="recipes"
 ></app-recipe-card-list>
 <!--
 <app-recipe-detail-view

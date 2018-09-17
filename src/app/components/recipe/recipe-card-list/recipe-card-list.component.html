@@ -3,7 +3,7 @@
     <!-- ngFor HERE -->
     <div
       class="container column is-one-quarter"
-      *ngFor="let recipe of recipes">
+      *ngFor="let recipe of recipes | async">
       <a routerLink="/recipes/{{recipe.title}}">
         <div class="card is-centered">
           <div class="card-content">

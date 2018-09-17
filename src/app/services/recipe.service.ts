@@ -3,40 +3,45 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument
-} from 'angularfire2/firestore';
-import { Recipe } from '../components/recipe/recipe.model';
-import { Observable } from 'rxjs';
+} from '@angular/fire/firestore';
 import 'rxjs';
+import { Observable } from 'rxjs';
+import { Recipe } from '../components/recipe/recipe.model';
 
 @Injectable()
 export class RecipeService {
-  recipeCollection: AngularFirestoreCollection<Recipe>;
-  recipes: Observable<Recipe[]>;
+  recipes: any;
+  addMe: Recipe;
+  recipeRef: any;
 
   constructor(
-    private afs: AngularFirestore
-  ) {}
-
-  getRecipes() {
-    this.recipeCollection = this.afs.collection('recipeDetails', ref => {
-      console.log(ref, 'REF')
-      return ref
-    });
-    this.recipes = this.recipeCollection.valueChanges();
+    private db: AngularFirestore,
+    // private _afs: AngularFirestoreCollection
+  ) {
+    this.recipeRef = this.db.collection('recipeDetails');
+    this.recipes = this.db.collection('recipeDetails').valueChanges();
   }
 
-  // getRecipesList(): AngularFireList<Recipe> {
-  //   return this.recipeRef;
-  // }
+  getRecipes(): any {
+    this.recipes.subscribe((res) => console.log(res));
+    return this.recipes;
+  }
+
+  createRecipe(): void {
+    this.addMe = {
+      title: 'test',
+      short: 'test',
+      description: 'test',
+      date: 'test',
+      imagePath: 'test',
+      id: 2
+    }
+    this.recipeRef.add(this.addMe);
+  }
 
   private handleError(error) {
     console.log(error);
   }
-  //
-  // createCustomer(customer: Customer): void {
-  //   this.customersRef.push(customer);
-  // }
-  //
   // updateCustomer(key: string, value: any): void {
   //   this.customersRef.update(key, value).catch(error => this.handleError(error));
   // }

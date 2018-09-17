@@ -1,9 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument
+  AngularFirestore
 } from 'angularfire2/firestore';
 import { RecipeService } from './recipe.service';
 
