@@ -17,14 +17,25 @@ import { Observable } from 'rxjs';
 })
 
 export class RecipeCardListComponent implements OnInit {
-  @Input() recipes: Recipe;
+  @Input() recipes: any;
   @Output() recipeSelected = new EventEmitter<Recipe>();
+  ray: any[];
+  id: any;
 
   constructor(
     private _recipeService: RecipeService
   ) {}
 
   ngOnInit() {
+    this._recipeService.getRecipes().subscribe((res) => {
+      let newRay = res.map(el => {
+        el.data.id = el.id
+        return el.data
+      })
+      this.ray = newRay;
+    console.log(this.ray)
+    })
+
   }
 
   onSelected(recipe: Recipe) {
@@ -32,8 +43,7 @@ export class RecipeCardListComponent implements OnInit {
   }
 
   deleteItem(event) {
-    console.log(event)
-    console.log(this._recipeService.deleteOne(event))
+    this._recipeService.deleteOne(event);
   }
 
 }

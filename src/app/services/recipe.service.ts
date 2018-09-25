@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import 'rxjs';
+import { map } from 'rxjs/operators';
 import { Recipe } from '../components/recipe/recipe.model';
 
 @Injectable()
@@ -8,19 +9,23 @@ export class RecipeService {
   recipes: any;
   addMe: Recipe;
   recipeRef: any;
+  id: string;
 
   constructor(private db: AngularFirestore) {
-    this.recipes = this.db.collection('recipeDetails').valueChanges()
     this.recipeRef = this.db.collection('recipeDetails');
   }
 
   getRecipes(): any {
-    this.recipes.subscribe((res) => {
-      console.log(res)
-      res.forEach((doc, i) => {
-          console.log(`${doc.id} => ${doc.title}`);
-      });
-    });
+    this.recipes = this.db.collection("recipeDetails")
+    .snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Recipe;
+          const id = a.payload.doc.id;
+          return { id, data };
+        })
+      })
+    )
     return this.recipes;
   }
 
@@ -36,8 +41,16 @@ export class RecipeService {
   //   this.recipeRef.add(this.addMe);
   // }
 
-  deleteOne(a) {
-
+  deleteOne(recipe) {
+    this.db.collection("recipeDetails")
+      .doc(recipe)
+      .delete()
+      .then(function() {
+          console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+          console.error("Error removing document: ", error);
+      });
   }
 
   // updateCustomer(key: string, value: any): void {
