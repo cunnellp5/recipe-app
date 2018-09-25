@@ -28,12 +28,11 @@ export class RecipeCardListComponent implements OnInit {
 
   ngOnInit() {
     this._recipeService.getRecipes().subscribe((res) => {
-      let newRay = res.map(el => {
-        el.data.id = el.id
-        return el.data
-      })
-      this.ray = newRay;
-    console.log(this.ray)
+      // let newRay = res.map(el => {
+      //   el.data.id = el.id
+      //   return el.data
+      // })
+      this.ray = res;
     })
 
   }

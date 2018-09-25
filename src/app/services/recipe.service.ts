@@ -22,7 +22,8 @@ export class RecipeService {
         return actions.map(a => {
           const data = a.payload.doc.data() as Recipe;
           const id = a.payload.doc.id;
-          return { id, data };
+          data.id = id;
+          return data;
         })
       })
     )
@@ -36,16 +37,12 @@ export class RecipeService {
   //     description: 'test',
   //     date: 'test',
   //     imagePath: 'test',
-  //     id: 3
   //   }
   //   this.recipeRef.add(this.addMe);
   // }
 
   deleteOne(recipe) {
-    this.db.collection("recipeDetails")
-      .doc(recipe)
-      .delete()
-      .then(function() {
+    this.recipeRef.doc(recipe).delete().then(() => {
           console.log("Document successfully deleted!");
       })
       .catch(function(error) {

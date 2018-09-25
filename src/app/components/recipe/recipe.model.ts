@@ -4,7 +4,7 @@ export class Recipe {
   public description: string;
   public date: string;
   public imagePath: string;
-  public id: number;
+  public id: string;
 
   constructor(
       title: string,
@@ -12,7 +12,7 @@ export class Recipe {
       description: string,
       date: string,
       imagePath: string,
-      id: number
+      id: string
   ) {
     this.title = title;
     this.short = short;
