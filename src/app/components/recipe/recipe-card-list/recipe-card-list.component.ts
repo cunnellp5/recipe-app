@@ -37,6 +37,12 @@ export class RecipeCardListComponent implements OnInit {
 
   }
 
+  createOne() {
+    this._recipeService.createRecipe();
+  }
+  updateItem(event) {
+    this._recipeService.updateRecipe(event);
+  }
   onSelected(recipe: Recipe) {
     this.recipeSelected.emit(recipe);
   }

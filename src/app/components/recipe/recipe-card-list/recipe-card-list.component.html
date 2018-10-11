@@ -4,7 +4,7 @@
     <div
       class="container column is-one-quarter"
       *ngFor="let recipe of ray">
-      <a routerLink="/recipes/{{recipe.title}}">
+      <!-- <a routerLink="/recipes/{{recipe.title}}"> -->
         <div class="card is-centered">
           <div class="card-content">
             <div class="media">
@@ -18,12 +18,18 @@
                 <p class="subtitle is-6">{{ recipe.short }}</p>
               </div>
               <p class="media-right">
-                <!-- <i
+                <i
                   style="color: red"
                   class="fa fa-trash"
                   aria-hidden="true"
                   (click)="deleteItem(recipe.id)">
-                </i> -->
+                </i>
+                <i
+                  style="color: blue"
+                  class="fa fa-recycle"
+                  aria-hidden="true"
+                  (click)="updateItem(recipe.id)">
+                </i>
               </p>
             </div>
             <div class="content">
@@ -34,8 +40,10 @@
             </div>
           </div>
         </div>
-      </a>
+      <!-- </a> -->
     </div>
     <!-- *** -->
   </div>
 </div>
+
+<button type="button" name="button" (click)="createOne()">CREATE</button>

@@ -7,7 +7,7 @@ import { Recipe } from '../components/recipe/recipe.model';
 @Injectable()
 export class RecipeService {
   recipes: any;
-  addMe: Recipe;
+  addMe: any;
   recipeRef: any;
   id: string;
 
@@ -17,7 +17,8 @@ export class RecipeService {
 
   getRecipes(): any {
     this.recipes = this.db.collection("recipeDetails")
-    .snapshotChanges().pipe(
+    .snapshotChanges()
+    .pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Recipe;
@@ -30,23 +31,33 @@ export class RecipeService {
     return this.recipes;
   }
 
-  // createRecipe(): void {
-  //   this.addMe = {
-  //     title: 'test2',
-  //     short: 'test',
-  //     description: 'test',
-  //     date: 'test',
-  //     imagePath: 'test',
-  //   }
-  //   this.recipeRef.add(this.addMe);
-  // }
+  updateRecipe(recipe): void {
+    let obj = {title: 'poop'};
+    this.recipeRef.doc(recipe).update(obj).then(() => {
+          console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+          console.error("Error removing document: ", error);
+      });
+  }
+
+  createRecipe(): void {
+    this.addMe = {
+      title: 'test2',
+      short: 'test',
+      description: 'test',
+      date: 'test',
+      imagePath: 'test',
+    }
+    this.recipeRef.add(this.addMe);
+  }
 
   deleteOne(recipe) {
     this.recipeRef.doc(recipe).delete().then(() => {
-          console.log("Document successfully deleted!");
+          console.log("Document successfully updated?!");
       })
-      .catch(function(error) {
-          console.error("Error removing document: ", error);
+      .catch((error) => {
+          console.error("Error updating document: ", error);
       });
   }
 
