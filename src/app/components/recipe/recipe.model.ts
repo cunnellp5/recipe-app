@@ -5,6 +5,9 @@ export class Recipe {
   public date: string;
   public imagePath: string;
   public id: string;
+  public ingredientsList: string[];
+  public personalNotes: string;
+  public instructions: string;
 
   constructor(
       title: string,
@@ -12,7 +15,10 @@ export class Recipe {
       description: string,
       date: string,
       imagePath: string,
-      id: string
+      id: string,
+      ingredientsList: string[],
+      personalNotes: string,
+      instructions: string
   ) {
     this.title = title;
     this.short = short;
@@ -20,5 +26,8 @@ export class Recipe {
     this.date = date;
     this.imagePath = imagePath;
     this.id = id;
+    this.ingredientsList = ingredientsList;
+    this.personalNotes = personalNotes;
+    this.instructions = instructions
   }
 }

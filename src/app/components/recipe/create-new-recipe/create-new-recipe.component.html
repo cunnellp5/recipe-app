@@ -1,0 +1,76 @@
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Add a new recipe
+      </h1>
+      <h2 class="subtitle">
+        :)
+      </h2>
+    </div>
+  </div>
+</section>
+<br>
+<p class="level-item has-text-centered">
+  <a
+    class="link is-info"
+    routerLink="/recipes">
+    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+     Go back to recipe list
+  </a>
+</p>
+<br>
+<div class="container">
+  <div class="columns">
+    <div class="column">
+      <!-- put form here -->
+      <div class="file is-boxed">
+        <label class="file-label">
+          <input class="file-input" type="file" name="resume">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+        </label>
+      </div>
+
+      <!--  -->
+    </div>
+    <div class="column">
+      <div class="content">
+        <div class="media">
+          <figure class="image is-128x128">
+            <img [src]="recipe?.imagePath">
+          </figure>
+          <div class="content">
+            <h3>title: {{ recipe?.title }}</h3>
+              <p>
+                {{ recipe?.description }}
+              </p>
+          </div>
+        </div>
+          <ul>
+            <h4>Ingredients List:</h4>
+            <label *ngFor="let ingredients of list" class="checkbox">
+              <input type="checkbox">
+              {{ingredients}}
+            </label>
+          </ul>
+          <blockquote>{{ recipe?.personalNotes }}</blockquote>
+
+        <article class="message is-dark">
+          <div class="message-header">
+            Instructions:
+          </div>
+          <div class="message-body">
+            {{ recipe?.instructions }}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

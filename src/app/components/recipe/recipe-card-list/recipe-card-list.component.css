@@ -1,0 +1,15 @@
+a {
+    /* color: #428BCA; */
+    color: #5b5b5b;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    /* color: #2A6496; */
+    text-decoration: none;
+}
+
+
+button {
+
+}

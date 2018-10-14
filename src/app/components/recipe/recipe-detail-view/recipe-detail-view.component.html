@@ -12,67 +12,42 @@
 </section>
 <br>
 <p class="level-item has-text-centered">
-  <a class="link is-info" routerLink="/recipes"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Go back to recipe list</a>
+  <a
+    class="link is-info"
+    (click)="goBack()">
+    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+     Go back to recipe list
+  </a>
 </p>
 <br>
+
 <div class="content container">
   <div class="media">
     <figure class="image is-128x128">
-      <img src="https://bulma.io/images/placeholders/256x256.png">
+      <img [src]="recipe?.imagePath">
     </figure>
     <div class="content">
-      <h3>Lets make it</h3>
-        <p>Quisque ante lacus, malesuada ac auctor vitae, congue
-          <a href="#">non ante</a>. Phasellus lacus ex, semper ac tortor nec, fringilla condimentum orci. Fusce eu rutrum tellus.
+      <h3>Lets make some fucking {{ recipe?.title }}!!! 😈</h3>
+        <p>
+          {{ recipe?.description }}
         </p>
     </div>
   </div>
-
     <ul>
-        <h4>Ingredients List</h4>
-        <label class="checkbox">
-          <input type="checkbox">
-            Donec blandit a lorem id convallis.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Cras gravida arcu at diam gravida gravida.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Integer in vulutpat libero.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Donec a diam tellus.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Aenean nec tortor orci.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Quisque aliquam cursus urna, non bibendum massa viverra eget.
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox">
-            Vivamus maximus ultricies pulvinar.
-        </label>
+      <h4>Ingredients List:</h4>
+      <label *ngFor="let ingredients of list" class="checkbox">
+        <input type="checkbox">
+        {{ingredients}}
+      </label>
     </ul>
-    <blockquote>Ut venenatis, nisl scelerisque sollicitudin fermentum, quam libero hendrerit ipsum, ut blandit est tellus sit amet turpis.</blockquote>
+    <blockquote>{{ recipe?.personalNotes }}</blockquote>
 
   <article class="message is-dark">
     <div class="message-header">
       Instructions:
     </div>
     <div class="message-body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+      {{ recipe?.instructions }}
     </div>
   </article>
 </div>

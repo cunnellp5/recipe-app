@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,20 +27,15 @@ export class RecipeCardListComponent implements OnInit {
 
   ngOnInit() {
     this._recipeService.getRecipes().subscribe((res) => {
-      // let newRay = res.map(el => {
-      //   el.data.id = el.id
-      //   return el.data
-      // })
       this.ray = res;
     })
-
   }
 
   createOne() {
     this._recipeService.createRecipe();
   }
   updateItem(event) {
-    this._recipeService.updateRecipe(event);
+    this._recipeService.updateIngredientsList(event);
   }
   onSelected(recipe: Recipe) {
     this.recipeSelected.emit(recipe);

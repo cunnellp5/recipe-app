@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../components/recipe/recipe.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
@@ -10,6 +11,7 @@ export class RecipeService {
   addMe: any;
   recipeRef: any;
   id: string;
+  recipe: any;
 
   constructor(private db: AngularFirestore) {
     this.recipeRef = this.db.collection('recipeDetails');
@@ -31,10 +33,24 @@ export class RecipeService {
     return this.recipes;
   }
 
+  getRecipe(id: string): Observable<Recipe> {
+    return this.recipeRef.doc(id).valueChanges();
+  }
+
   updateRecipe(recipe): void {
-    let obj = {title: 'poop'};
+    let obj = {new: ['poop']};
     this.recipeRef.doc(recipe).update(obj).then(() => {
-          console.log("Document successfully deleted!");
+          console.log("Document successfully update!");
+      })
+      .catch((error) => {
+          console.error("Error updating doc: ", error);
+      });
+  }
+
+  updateIngredientsList(recipe): void {
+    let ingredientsList = {ingredientsList: ['sugar', 'veal', 'poop']};
+    this.recipeRef.doc(recipe).update(ingredientsList).then(() => {
+          console.log("Document successfully updated ingredient list!");
       })
       .catch((error) => {
           console.error("Error removing document: ", error);
@@ -54,10 +70,10 @@ export class RecipeService {
 
   deleteOne(recipe) {
     this.recipeRef.doc(recipe).delete().then(() => {
-          console.log("Document successfully updated?!");
+          console.log("Document successfully deleted");
       })
       .catch((error) => {
-          console.error("Error updating document: ", error);
+          console.error("Error deleting document: ", error);
       });
   }
 
@@ -76,8 +92,8 @@ export class RecipeService {
   // }
   //
 
-  private handleError(error) {
-    console.log(error);
-  }
+  // private handleError(error) {
+  //   console.log(error);
+  // }
 
 }
