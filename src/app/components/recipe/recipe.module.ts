@@ -7,11 +7,14 @@ import { RecipeDetailViewComponent } from './recipe-detail-view/recipe-detail-vi
 import { CreateNewRecipeComponent } from './create-new-recipe/create-new-recipe.component';
 
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
   ],

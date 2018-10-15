@@ -24,32 +24,117 @@
   <div class="columns">
     <div class="column">
       <!-- put form here -->
-      <div class="file is-boxed">
-        <label class="file-label">
-          <input class="file-input" type="file" name="resume">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
-            </span>
-            <span class="file-label">
-              Choose a file…
-            </span>
-          </span>
-        </label>
-      </div>
 
+      <form [formGroup]="recipeForm" (ngSubmit)="onFormSubmit()">
+        <!-- <div class="field">
+          <div class="file has-name">
+            <label class="file-label">
+              <input
+                class="file-input"
+                type="file"
+                name="picture"
+                [(ngModel)]="picture"
+                formControlName="formPicture"
+                (change)="onFileChanged($event)">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Picture…
+                </span>
+              </span>
+              <span class="file-name">
+                Screen Shot 2017-07-29 at 15.54.25.png
+              </span>
+            </label>
+          </div>
+        </div> -->
+        <div class="field">
+          <label class="label">Title:</label>
+          <div class="control">
+            <input
+              formControlName="formTitle"
+              [(ngModel)]="title"
+              class="input"
+              type="text"
+              placeholder="e.g Chocolate chip cookies">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Short Card description</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              formControlName="formShortDescription"
+              placeholder="Short description">
+          </div>
+          <p class="help">*Short description you'll see in the view all page under each card</p>
+        </div>
+
+        <div class="field">
+          <label class="label">Long Description</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Long description"
+              [(ngModel)]="long"
+              formControlName="formLongDescription">
+            </textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Ingredient List</label>
+          <div class="control">
+            ???
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Personal notes</label>
+          <div class="control">
+            <input
+              formControlName="formNotes"
+              [(ngModel)]="notes"
+              class="input"
+              type="text"
+              placeholder="e.g personal notes / quotes about this">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Instructions</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Instructions"
+              [(ngModel)]="instructions"
+              formControlName="formInstructions">
+            </textarea>
+          </div>
+        </div>
+
+        <br>
+        <div class="control">
+          <button class="button is-primary" type="submit">Submit</button>
+        </div>
+      </form>
+      <br>
       <!--  -->
     </div>
-    <div class="column">
+    <div class="column textWrap">
       <div class="content">
         <div class="media">
           <figure class="image is-128x128">
-            <img [src]="recipe?.imagePath">
+            <img src="https://via.placeholder.com/128x128">
           </figure>
           <div class="content">
-            <h3>title: {{ recipe?.title }}</h3>
-              <p>
-                {{ recipe?.description }}
+            <h3>Title: {{ title }}</h3>
+              <p class="widthShort">
+                Description: {{ long }}
               </p>
           </div>
         </div>
@@ -60,17 +145,18 @@
               {{ingredients}}
             </label>
           </ul>
-          <blockquote>{{ recipe?.personalNotes }}</blockquote>
+          <blockquote>{{ notes }}</blockquote>
 
         <article class="message is-dark">
           <div class="message-header">
             Instructions:
           </div>
-          <div class="message-body">
-            {{ recipe?.instructions }}
+          <div class="message-body widthLong">
+            {{ instructions }}
           </div>
         </article>
       </div>
+      <br>
     </div>
   </div>
 </div>

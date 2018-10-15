@@ -1,0 +1,11 @@
+.textWrap {
+  overflow-wrap: break-word;
+}
+
+.widthShort {
+  width: 300px;
+}
+
+.widthLong {
+  max-width: 600px;
+}

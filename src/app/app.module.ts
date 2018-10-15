@@ -18,6 +18,8 @@ import { FoodPicturesComponent } from './components/food-pictures/food-pictures.
 
 import { ServiceModule } from './services/services.module';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ServiceModule } from './services/services.module';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     RecipeModule,
