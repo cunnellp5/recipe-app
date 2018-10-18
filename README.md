@@ -2,16 +2,16 @@
 ---
 ### TODO
 ##### Basic Setup:
-[✓] routerLinks
-[✓] create recipe component and nested components
-[✓] recipe list
-[✓] detail view
-[✓] list view
-[✓] delete single recipes
-[✓] create id routes for single recipe detail
-[] create journal component and nested components
-[] picture component
-[] set up crud functionality for each button
+[✓] routerLinks  
+[✓] create recipe component and nested components  
+[✓] recipe list  
+[✓] detail view  
+[✓] list view  
+[✓] delete single recipes  
+[✓] create id routes for single recipe detail  
+[]  create journal component and nested components  
+[]  picture component  
+[]  set up crud functionality for each button  
 
 ##### Extra Functionality:
 [] filter cards  
