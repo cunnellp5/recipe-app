@@ -5,8 +5,6 @@ import {
   ViewChild
 } from '@angular/core';
 import {
-  FormControl,
-  Validators,
   FormGroup,
   FormArray,
   FormBuilder
@@ -23,6 +21,11 @@ import { RecipeService } from '../../../services/recipe.service';
 export class CreateNewRecipeComponent implements OnInit {
   selectedFile: File;
   recipeForm: any;
+  title: string;
+  long: string;
+  notes: string;
+  instructions: string;
+  list: string[];
   @ViewChild('ingredientList') input;
 
   constructor(
@@ -39,43 +42,31 @@ export class CreateNewRecipeComponent implements OnInit {
       formLongDescription: [''],
       formNotes: [''],
       formInstructions: [''],
-      formIngredientList: ['']
-      // formIngredientList: this._fb.array([
-      //   console.log(this.initIngredientList())
-      //   this.initIngredientList()
-      // ])
+      formIngredientList: this._fb.array([ this.createIngredientList() ])
     });
+    console.log(this.recipeForm.get('formIngredientList').controls);
   }
 
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0]
+  createIngredientList() {
+    return this._fb.group({ list: '' });
+  }
+
+  addInputList(event) {
+    const list = this.createIngredientList();
+    this.inputList.push(list);
+  }
+
+  get inputList(): FormArray {
+    return this.recipeForm.get('formIngredientList') as FormArray;
   }
 
   onFormSubmit() {
-    let form = this.recipeForm;
-    console.log('formTitle: ' + form.get('formTitle').value);
-    console.log('formShortDescription: ' + form.get('formShortDescription').value);
-    console.log('formLongDescription: ' + form.get('formLongDescription').value);
-    console.log('formNotes: ' + form.get('formNotes').value);
-    console.log('formInstructions: ' + form.get('formInstructions').value);
-    console.log('formIngredientList ' + form.get('formIngredientList').value);
+    console.log(this.recipeForm.value);
+    // const form = this.recipeForm;
   }
 
-  // initIngredientList() {
-  //   return this._fb.group({ list: [''] });
-  // }
-  //
-  addInputList(event) {
-    console.log(this.input.nativeElement.value)
-    // const div = document.createElement('div');
-    // const input = document.createElement('input');
-
-    // let newField = div.appendChild(input);
-
-
-    // const control = <FormArray>this.recipeForm.controls['formIngredientList'];
-    // console.log(control)
-    // control.push(this.initIngredientList());
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
   }
 
 }

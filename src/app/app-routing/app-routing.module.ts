@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 
 import { BlogComponent } from '../components/blog/blog.component';
 import { HomepageComponent } from '../components/homepage/homepage.component';
@@ -9,13 +9,13 @@ import { RecipeDetailViewComponent } from '../components/recipe/recipe-detail-vi
 import { CreateNewRecipeComponent } from '../components/recipe/create-new-recipe/create-new-recipe.component';
 
 const appRoutes: Routes = [
-  { path: "", component: HomepageComponent },
-  { path: "blog", component: BlogComponent },
-  { path: "pictures", component: FoodPicturesComponent },
-  { path: "recipes", component: RecipeComponent },
-  { path: "recipes/:id", component: RecipeDetailViewComponent },
-  { path: "create", component: CreateNewRecipeComponent }
-]
+  { path: '', component: HomepageComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'pictures', component: FoodPicturesComponent },
+  { path: 'recipes', component: RecipeComponent },
+  { path: 'recipes/:id', component: RecipeDetailViewComponent },
+  { path: 'create', component: CreateNewRecipeComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

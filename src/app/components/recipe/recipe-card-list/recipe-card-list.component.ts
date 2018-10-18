@@ -16,9 +16,9 @@ import { RecipeService } from '../../../services/recipe.service';
 })
 
 export class RecipeCardListComponent implements OnInit {
-  @Input() recipes: any;
+  // @Input() recipes: any;
   @Output() recipeSelected = new EventEmitter<Recipe>();
-  ray: any[];
+  recipes: any[];
   id: any;
 
   constructor(
@@ -27,8 +27,8 @@ export class RecipeCardListComponent implements OnInit {
 
   ngOnInit() {
     this._recipeService.getRecipes().subscribe((res) => {
-      this.ray = res;
-    })
+      this.recipes = res;
+    });
   }
 
   createOne() {

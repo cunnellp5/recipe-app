@@ -86,17 +86,20 @@
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Ingredient List</label>
-          <div class="control">
-            <input
-              #ingredientList
-              class="input"
-              type="text"
-              formControlName="formIngredientList"
-              placeholder="List of Ingredients">
+        <form formArrayName="formIngredientList" *ngFor="let formIngredient of recipeForm.get('formIngredientList').controls; let i=index">
+          <div [formGroup]="formIngredient">
+            <div class="field">
+              <label class="label">Ingredient!</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  formControlName="list"
+                  placeholder="List ingredients">
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
         <input type="button" value="Add list" (click)="addInputList()">
 
         <br>

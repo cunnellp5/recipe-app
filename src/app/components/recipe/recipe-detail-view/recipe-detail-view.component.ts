@@ -22,7 +22,7 @@ export class RecipeDetailViewComponent implements OnInit {
 
   ngOnInit(): void {
     const route = this.route.snapshot.paramMap.get('id');
-    if(route === 'new') {
+    if (route === 'new') {
       this.recipe = {
         title: 'New',
         short: 'This is for the dashboard view',
@@ -33,9 +33,9 @@ export class RecipeDetailViewComponent implements OnInit {
         ingredientsList: ['1', '2', '3'],
         personalNotes: 'some personal notes on this shit',
         instructions: 'How to cook the whole fucking thing'
-      }
+      };
     } else {
-      this.getRecipe()
+      this.getRecipe();
     }
   }
 
@@ -43,9 +43,9 @@ export class RecipeDetailViewComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipe(id)
       .subscribe(recipe => {
-        this.recipe = recipe
+        this.recipe = recipe;
         this.list = this.recipe.ingredientsList;
-      })
+      });
   }
 
   goBack(): void {

@@ -18,7 +18,7 @@ export class RecipeService {
   }
 
   getRecipes(): any {
-    this.recipes = this.db.collection("recipeDetails")
+    this.recipes = this.db.collection('recipeDetails')
     .snapshotChanges()
     .pipe(
       map(actions => {
@@ -27,9 +27,9 @@ export class RecipeService {
           const id = a.payload.doc.id;
           data.id = id;
           return data;
-        })
+        });
       })
-    )
+    );
     return this.recipes;
   }
 
@@ -38,22 +38,22 @@ export class RecipeService {
   }
 
   updateRecipe(recipe): void {
-    let obj = {new: ['poop']};
+    const obj = {new: ['poop']};
     this.recipeRef.doc(recipe).update(obj).then(() => {
-          console.log("Document successfully update!");
+          console.log('Document successfully update!');
       })
       .catch((error) => {
-          console.error("Error updating doc: ", error);
+          console.error('Error updating doc: ', error);
       });
   }
 
   updateIngredientsList(recipe): void {
-    let ingredientsList = {ingredientsList: ['sugar', 'veal', 'poop']};
+    const ingredientsList = {ingredientsList: ['sugar', 'veal', 'poop']};
     this.recipeRef.doc(recipe).update(ingredientsList).then(() => {
-          console.log("Document successfully updated ingredient list!");
+          console.log('Document successfully updated ingredient list!');
       })
       .catch((error) => {
-          console.error("Error removing document: ", error);
+          console.error('Error removing document: ', error);
       });
   }
 
@@ -64,16 +64,16 @@ export class RecipeService {
       description: 'test',
       date: 'test',
       imagePath: 'test',
-    }
+    };
     this.recipeRef.add(this.addMe);
   }
 
   deleteOne(recipe) {
     this.recipeRef.doc(recipe).delete().then(() => {
-          console.log("Document successfully deleted");
+          console.log('Document successfully deleted');
       })
       .catch((error) => {
-          console.error("Error deleting document: ", error);
+          console.error('Error deleting document: ', error);
       });
   }
 
