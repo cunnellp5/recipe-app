@@ -31,9 +31,9 @@ export class RecipeCardListComponent implements OnInit {
     });
   }
 
-  createOne() {
-    this._recipeService.createRecipe();
-  }
+  // createOne() {
+  //   this._recipeService.createRecipe();
+  // }
   updateItem(event) {
     this._recipeService.updateIngredientsList(event);
   }

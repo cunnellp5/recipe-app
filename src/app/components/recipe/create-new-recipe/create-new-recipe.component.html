@@ -157,10 +157,13 @@
         </div>
           <ul>
             <h4>Ingredients List:</h4>
-            <label *ngFor="let ingredients of list" class="checkbox">
-              <input type="checkbox">
-              {{ ingredients }}
-            </label>
+            <div *ngFor="let ingredients of this.recipeForm.get('formIngredientList').value">
+              <label class="checkbox">
+                <input type="checkbox">
+                {{ ingredients.list }}
+              </label>
+              <br>
+            </div>
           </ul>
           <blockquote>{{ notes }}</blockquote>
 

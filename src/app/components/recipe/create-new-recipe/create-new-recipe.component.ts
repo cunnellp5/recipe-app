@@ -1,14 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild
-} from '@angular/core';
-import {
-  FormGroup,
-  FormArray,
-  FormBuilder
-} from '@angular/forms';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
 
@@ -31,7 +23,8 @@ export class CreateNewRecipeComponent implements OnInit {
   constructor(
     private _recipeService: RecipeService,
     private _fb: FormBuilder,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -44,7 +37,6 @@ export class CreateNewRecipeComponent implements OnInit {
       formInstructions: [''],
       formIngredientList: this._fb.array([ this.createIngredientList() ])
     });
-    console.log(this.recipeForm.get('formIngredientList').controls);
   }
 
   createIngredientList() {
@@ -61,12 +53,25 @@ export class CreateNewRecipeComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.recipeForm.value);
-    // const form = this.recipeForm;
+    let recipe = this.mapperFunction(this.recipeForm.value)
+    this._recipeService.createRecipe(recipe)
+    this.router.navigate(['/recipes']);
   }
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
   }
 
+  mapperFunction(obj) {
+    let newObj: any = {};
+     newObj.date = new Date();
+     newObj.title = obj.formTitle;
+     newObj.imagePath = obj.formPicture;
+     newObj.short = obj.formShortDescription;
+     newObj.description = obj.formLongDescription;
+     newObj.personalNotes = obj.formNotes;
+     newObj.instructions = obj.formInstructions;
+     newObj.ingredientsList = obj.formIngredientList;
+    return newObj;
+  }
 }

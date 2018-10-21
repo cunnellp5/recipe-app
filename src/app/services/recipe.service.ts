@@ -57,15 +57,15 @@ export class RecipeService {
       });
   }
 
-  createRecipe(): void {
-    this.addMe = {
-      title: 'test2',
-      short: 'test',
-      description: 'test',
-      date: 'test',
-      imagePath: 'test',
-    };
-    this.recipeRef.add(this.addMe);
+  createRecipe(recipe): void {
+    // this.addMe = {
+      // title: 'test2',
+      // short: 'test',
+      // description: 'test',
+      // date: 'test',
+      // imagePath: 'test',
+    // };
+    this.recipeRef.add(recipe);
   }
 
   deleteOne(recipe) {
