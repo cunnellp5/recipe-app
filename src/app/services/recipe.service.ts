@@ -37,9 +37,8 @@ export class RecipeService {
     return this.recipeRef.doc(id).valueChanges();
   }
 
-  updateRecipe(recipe): void {
-    const obj = {new: ['poop']};
-    this.recipeRef.doc(recipe).update(obj).then(() => {
+  updateRecipe(id, recipe): void {
+    this.recipeRef.doc(id).update(recipe).then(() => {
           console.log('Document successfully update!');
       })
       .catch((error) => {
@@ -48,6 +47,7 @@ export class RecipeService {
   }
 
   updateIngredientsList(recipe): void {
+    if(!recipe) return;
     const ingredientsList = {ingredientsList: ['sugar', 'veal', 'poop']};
     this.recipeRef.doc(recipe).update(ingredientsList).then(() => {
           console.log('Document successfully updated ingredient list!');

@@ -62,7 +62,7 @@ export class CreateNewRecipeComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  mapperFunction(obj) {
+  mapperFunction(obj): any {
     let newObj: any = {};
      newObj.date = new Date();
      newObj.title = obj.formTitle;
@@ -71,7 +71,7 @@ export class CreateNewRecipeComponent implements OnInit {
      newObj.description = obj.formLongDescription;
      newObj.personalNotes = obj.formNotes;
      newObj.instructions = obj.formInstructions;
-     newObj.ingredientsList = obj.formIngredientList;
+     newObj.ingredientsList = obj.formIngredientList.map((el) => el.list)
     return newObj;
   }
 }

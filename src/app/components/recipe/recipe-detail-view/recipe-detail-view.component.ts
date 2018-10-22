@@ -43,8 +43,10 @@ export class RecipeDetailViewComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipe(id)
       .subscribe(recipe => {
-        this.recipe = recipe;
-        this.list = this.recipe.ingredientsList;
+        if(recipe) {
+          this.recipe = recipe;
+          this.list = this.recipe.ingredientsList;
+        }
       });
   }
 

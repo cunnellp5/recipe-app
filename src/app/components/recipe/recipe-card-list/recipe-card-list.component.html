@@ -11,7 +11,7 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-96x96">
-                  <img [src]="recipe.imagePath" alt="{{ recipe.title }}">
+                  <img *ngIf="recipe.imagePath" [src]="recipe.imagePath" alt="{{ recipe.title }}">
                 </figure>
               </div>
               <div class="media-content">
@@ -20,7 +20,7 @@
             <div class="content">
               <p class="title is-4">{{ recipe.title }}</p>
               <p class="subtitle is-6">{{ recipe.short }}</p>
-              <time datetime="2016-1-1">1 Jan 2016</time>
+              <!-- <time datetime="2016-1-1">{{ dateConverter(recipe.date) }}</time> -->
             </div>
           </a>
           <p class="buttons">
@@ -32,15 +32,15 @@
                 class="fa fa-trash"
                 aria-hidden="true"
                 (click)="deleteItem(recipe.id)">
-                delete
               </i>
             </button>
+             <!-- USE THIS BUTTON WHEN YOU GET TO EDIT MODE -->
             <button class="button is-info is-small" type="button" name="button">
               <i
                 class="fa fa-edit"
                 aria-hidden="true"
-                (click)="deleteItem(recipe.id)">
-                Edit Item
+                (click)="editItem(recipe.id)">
+                Edit
               </i>
             </button>
           </p>
@@ -50,7 +50,7 @@
     <!-- *** -->
   </div>
 </div>
-<div class="container column is-one-quarter">
+<!-- <div class="container column is-one-quarter">
   <button
     class="button is-primary is-small"
     routerLink="/create"
@@ -58,4 +58,4 @@
     name="button">
     Create New Recipe
   </button>
-</div>
+</div> -->

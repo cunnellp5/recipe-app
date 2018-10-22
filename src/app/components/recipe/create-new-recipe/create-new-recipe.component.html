@@ -4,19 +4,19 @@
       <h1 class="title">
         Add a new recipe
       </h1>
-      <h2 class="subtitle">
+      <!-- <h2 class="subtitle">
         :)
-      </h2>
+      </h2> -->
     </div>
   </div>
 </section>
 <br>
 <p class="level-item has-text-centered">
   <a
-    class="link is-info"
+    class="link button is-primary is-outlined"
     routerLink="/recipes">
-    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-     Go back to recipe list
+    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;
+     Back
   </a>
 </p>
 <br>
@@ -31,12 +31,11 @@
             <label class="file-label">
               <input
                 class="file-input"
-                type="file"
+                type="text"
                 name="picture"
                 [(ngModel)]="picture"
-                formControlName="formPicture"
-                (change)="onFileChanged($event)">
-              <span class="file-cta">
+                formControlName="formPicture"> -->
+              <!-- <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
                 </span>
@@ -46,10 +45,21 @@
               </span>
               <span class="file-name">
                 Screen Shot 2017-07-29 at 15.54.25.png
-              </span>
-            </label>
+              </span> -->
+            <!-- </label>
           </div>
         </div> -->
+        <div class="field">
+          <label class="label">img:</label>
+          <div class="control">
+            <input
+              formControlName="formPicture"
+              [(ngModel)]="picture"
+              class="input"
+              type="text"
+              placeholder="e.g Chocolate chip cookies">
+          </div>
+        </div>
         <div class="field">
           <label class="label">Title:</label>
           <div class="control">
@@ -146,7 +156,7 @@
       <div class="content">
         <div class="media">
           <figure class="image is-128x128">
-            <img src="https://via.placeholder.com/128x128">
+            <img src="{{ picture ? picture : 'https://via.placeholder.com/128x128'}}">
           </figure>
           <div class="content">
             <h3>Title: {{ title }}</h3>

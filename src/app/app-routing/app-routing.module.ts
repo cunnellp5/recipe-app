@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'pictures', component: FoodPicturesComponent },
   { path: 'recipes', component: RecipeComponent },
   { path: 'recipes/:id', component: RecipeDetailViewComponent },
+  { path: 'recipes/:id/edit', component: RecipeDetailViewComponent },
   { path: 'create', component: CreateNewRecipeComponent }
 ];
 

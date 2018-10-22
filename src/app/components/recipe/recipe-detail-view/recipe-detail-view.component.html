@@ -13,21 +13,21 @@
 <br>
 <p class="level-item has-text-centered">
   <a
-    class="link is-info"
+    class="link button is-primary is-outlined"
     (click)="goBack()">
-    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-     Go back to recipe list
+    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;
+     Back
   </a>
 </p>
 <br>
 
-<div class="content container">
+<div *ngIf="recipe" class="content container">
   <div class="media">
     <figure class="image is-128x128">
       <img [src]="recipe?.imagePath" alt="THIS IS THE NULL ERROR">
     </figure>
     <div class="content">
-      <h3>Lets make some fucking {{ recipe?.title }}!!! 😈</h3>
+      <h3>Lets make some fucking {{ recipe?.title }}!</h3>
         <p>
           {{ recipe?.description }}
         </p>
@@ -53,3 +53,12 @@
 </div>
 
 <br>
+
+<button class="is-fullwidth button is-info is-large" type="button" name="button">
+  <i
+    class="fa fa-edit"
+    aria-hidden="true"
+    (click)="editItem(recipe.id)">
+    Update!
+  </i>
+</button>

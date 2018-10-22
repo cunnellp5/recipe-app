@@ -1,10 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input
-} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
 
@@ -22,7 +17,8 @@ export class RecipeCardListComponent implements OnInit {
   id: any;
 
   constructor(
-    private _recipeService: RecipeService
+    private _recipeService: RecipeService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -30,19 +26,22 @@ export class RecipeCardListComponent implements OnInit {
       this.recipes = res;
     });
   }
-
-  // createOne() {
-  //   this._recipeService.createRecipe();
-  // }
-  updateItem(event) {
-    this._recipeService.updateIngredientsList(event);
+  updateItem(recipe) {
+    this._recipeService.updateIngredientsList(recipe);
   }
   onSelected(recipe: Recipe) {
     this.recipeSelected.emit(recipe);
   }
-
-  deleteItem(event) {
-    this._recipeService.deleteOne(event);
+  deleteItem(id) {
+    this._recipeService.deleteOne(id);
   }
+  editItem(id) {
+    this.router.navigate([`/recipes/${id}/edit`]);
+  }
+
+  // dateConverter(date) {
+  //   var newDate = new Date(date.seconds);
+  //   return newDate
+  // }
 
 }
