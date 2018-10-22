@@ -2,11 +2,11 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Add a new recipe
+        {{ editable ? 'Update recipe' : 'Add new recipe'}}
       </h1>
-      <!-- <h2 class="subtitle">
-        :)
-      </h2> -->
+      <h2 class="subtitle">
+        {{ editable ? '🧀🍷' : '🍕🍺'}}
+      </h2>
     </div>
   </div>
 </section>
@@ -92,11 +92,12 @@
         <div class="field">
           <label class="label">Personal notes</label>
           <div class="control">
-            <input
+            <textarea
               formControlName="formNotes"
               class="input"
               type="text"
               placeholder="e.g personal notes / quotes about this">
+            </textarea>
           </div>
         </div>
 

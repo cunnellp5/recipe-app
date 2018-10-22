@@ -6,6 +6,6 @@ input.checkbox {
   margin-right: 10px;
 }
 
-textarea, div {
+textarea, div, blockquote {
   white-space: pre-wrap;
 }

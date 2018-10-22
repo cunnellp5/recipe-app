@@ -37,7 +37,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-      console.log(this.editRecipe, 'RECIPE');
+    console.log(this.editRecipe, 'RECIPE');
   }
 
   initializeCreateMode() {
