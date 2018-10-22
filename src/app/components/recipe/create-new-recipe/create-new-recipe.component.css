@@ -9,3 +9,7 @@
 .widthLong {
   max-width: 600px;
 }
+
+textarea, div {
+  white-space: pre-wrap;
+}

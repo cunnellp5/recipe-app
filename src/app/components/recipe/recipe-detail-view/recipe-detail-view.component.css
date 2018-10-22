@@ -5,3 +5,7 @@
 input.checkbox {
   margin-right: 10px;
 }
+
+textarea, div {
+  white-space: pre-wrap;
+}
