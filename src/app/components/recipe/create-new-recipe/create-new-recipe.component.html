@@ -114,10 +114,13 @@
         <br>
         <div class="control">
           <button
-            class="button is-primary"
+            class="button is-primary is-fullwidth is-large"
+            [class.is-primary]="!editable"
+            [class.is-info]="editable"
             type="submit"
             [disabled]="!recipeForm.valid">
-            Submit
+            <i class="fa fa-{{ editable ? 'edit' : 'check-square' }}" aria-hidden="true"></i>&nbsp;
+            {{ editable ? 'Update' : 'Submit'}}
           </button>
         </div>
       </form>

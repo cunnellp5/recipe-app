@@ -16,6 +16,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   recipeForm: any;
   list: string[];
   selectedFile: any;
+  editable: any;
   @ViewChild('ingredientList') input;
 
   constructor(
@@ -27,7 +28,8 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    if(this.editRecipe) {
+    this.editable = this.editRecipe;
+    if(this.editable) {
       this.initializeEditMode(this.editRecipe)
     } else {
       this.initializeCreateMode();
@@ -58,16 +60,20 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
       formLongDescription: [recipe.description],
       formNotes: [recipe.personalNotes],
       formInstructions: [recipe.instructions],
-      formIngredientList: this._fb.array([ this.createIngredientList() ])
+      formIngredientList: this._fb.array([ this.createEditIngredientList() ])
     });
   }
 
+  createEditIngredientList() {
+    let listRay = this.editRecipe.ingredientsList;
+    return this._fb.group({ list: listRay[0] });
+  }
+
   createIngredientList() {
-    // let ray = this.editRecipe.ingredientsList;
     return this._fb.group({ list: '' });
   }
 
-  addInputList(event) {
+  addInputList() {
     const list = this.createIngredientList();
     this.inputList.push(list);
   }
@@ -75,6 +81,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   get inputList(): FormArray {
     return this.recipeForm.get('formIngredientList') as FormArray;
   }
+
 
   onFormSubmit() {
     if(!this.editRecipe) {
