@@ -24,37 +24,12 @@
   <div class="columns">
     <div class="column">
       <!-- put form here -->
-
-      <form [formGroup]="recipeForm" (ngSubmit)="onFormSubmit()">
-        <!-- <div class="field">
-          <div class="file has-name">
-            <label class="file-label">
-              <input
-                class="file-input"
-                type="text"
-                name="picture"
-                [(ngModel)]="picture"
-                formControlName="formPicture"> -->
-              <!-- <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
-                </span>
-                <span class="file-label">
-                  Picture…
-                </span>
-              </span>
-              <span class="file-name">
-                Screen Shot 2017-07-29 at 15.54.25.png
-              </span> -->
-            <!-- </label>
-          </div>
-        </div> -->
+      <form *ngIf="recipeForm" [formGroup]="recipeForm" (ngSubmit)="onFormSubmit()">
         <div class="field">
           <label class="label">img:</label>
           <div class="control">
             <input
               formControlName="formPicture"
-              [(ngModel)]="picture"
               class="input"
               type="text"
               placeholder="e.g Chocolate chip cookies">
@@ -65,7 +40,7 @@
           <div class="control">
             <input
               formControlName="formTitle"
-              [(ngModel)]="title"
+              value="hello"
               class="input"
               type="text"
               placeholder="e.g Chocolate chip cookies">
@@ -90,7 +65,6 @@
             <textarea
               class="textarea"
               placeholder="Long description"
-              [(ngModel)]="long"
               formControlName="formLongDescription">
             </textarea>
           </div>
@@ -120,7 +94,6 @@
           <div class="control">
             <input
               formControlName="formNotes"
-              [(ngModel)]="notes"
               class="input"
               type="text"
               placeholder="e.g personal notes / quotes about this">
@@ -133,7 +106,6 @@
             <textarea
               class="textarea"
               placeholder="Instructions"
-              [(ngModel)]="instructions"
               formControlName="formInstructions">
             </textarea>
           </div>
@@ -156,12 +128,12 @@
       <div class="content">
         <div class="media">
           <figure class="image is-128x128">
-            <img src="{{ picture ? picture : 'https://via.placeholder.com/128x128'}}">
+            <img src="{{ recipeForm ? recipeForm.get('formPicture').value : 'https://via.placeholder.com/128x128'}}">
           </figure>
           <div class="content">
-            <h3>Title: {{ title }}</h3>
+            <h3>Title: {{ recipeForm.get('formTitle').value }}</h3>
               <p class="widthShort">
-                Description: {{ long }}
+                Description: {{ recipeForm.get('formLongDescription').value }}
               </p>
           </div>
         </div>
@@ -175,14 +147,14 @@
               <br>
             </div>
           </ul>
-          <blockquote>{{ notes }}</blockquote>
+          <blockquote>{{ recipeForm.get('formNotes').value }}</blockquote>
 
         <article class="message is-dark">
           <div class="message-header">
             Instructions:
           </div>
           <div class="message-body widthLong">
-            {{ instructions }}
+            {{ recipeForm.get('formInstructions').value }}
           </div>
         </article>
       </div>

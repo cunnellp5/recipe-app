@@ -1,8 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-new-recipe',
@@ -10,24 +11,34 @@ import { RecipeService } from '../../../services/recipe.service';
   styleUrls: ['./create-new-recipe.component.css']
 })
 
-export class CreateNewRecipeComponent implements OnInit {
-  selectedFile: File;
+export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
+  @Input() editRecipe: any;
   recipeForm: any;
-  title: string;
-  long: string;
-  notes: string;
-  instructions: string;
   list: string[];
+  selectedFile: any;
   @ViewChild('ingredientList') input;
 
   constructor(
     private _recipeService: RecipeService,
     private _fb: FormBuilder,
     private elementRef: ElementRef,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    if(this.editRecipe) {
+      this.initializeEditMode(this.editRecipe)
+    } else {
+      this.initializeCreateMode();
+    }
+  }
+
+  ngAfterViewInit() {
+      console.log(this.editRecipe, 'RECIPE');
+  }
+
+  initializeCreateMode() {
     this.recipeForm = this._fb.group({
       formTitle: [''],
       formPicture: [''],
@@ -39,7 +50,20 @@ export class CreateNewRecipeComponent implements OnInit {
     });
   }
 
+  initializeEditMode(recipe) {
+    this.recipeForm = this._fb.group({
+      formTitle: [recipe.title],
+      formPicture: [recipe.imagePath],
+      formShortDescription: [recipe.short],
+      formLongDescription: [recipe.description],
+      formNotes: [recipe.personalNotes],
+      formInstructions: [recipe.instructions],
+      formIngredientList: this._fb.array([ this.createIngredientList() ])
+    });
+  }
+
   createIngredientList() {
+    // let ray = this.editRecipe.ingredientsList;
     return this._fb.group({ list: '' });
   }
 
@@ -53,9 +77,16 @@ export class CreateNewRecipeComponent implements OnInit {
   }
 
   onFormSubmit() {
-    let recipe = this.mapperFunction(this.recipeForm.value)
-    this._recipeService.createRecipe(recipe)
-    this.router.navigate(['/recipes']);
+    if(!this.editRecipe) {
+      let recipe = this.mapperFunction(this.recipeForm.value)
+      this._recipeService.createRecipe(recipe)
+      this.router.navigate(['/recipes']);
+    } else {
+      let recipe = this.mapperFunction(this.recipeForm.value)
+      const id = this.route.snapshot.paramMap.get('id');
+      this._recipeService.updateRecipe(id, recipe)
+      this.router.navigate(['/recipes']);
+    }
   }
 
   onFileChanged(event) {
