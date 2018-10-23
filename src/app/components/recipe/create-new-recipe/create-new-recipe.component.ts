@@ -29,8 +29,8 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.editable = this.editRecipe;
-    if(this.editable) {
-      this.initializeEditMode(this.editRecipe)
+    if (this.editable) {
+      this.initializeEditMode(this.editRecipe);
     } else {
       this.initializeCreateMode();
     }
@@ -65,7 +65,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   createEditIngredientList() {
-    let listRay = this.editRecipe.ingredientsList;
+    const listRay = this.editRecipe.ingredientsList;
     return this._fb.group({ list: listRay[0] });
   }
 
@@ -82,16 +82,20 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
     return this.recipeForm.get('formIngredientList') as FormArray;
   }
 
+  deleteItem(index) {
+    this.inputList.removeAt(index);
+  }
+
 
   onFormSubmit() {
-    if(!this.editRecipe) {
-      let recipe = this.mapperFunction(this.recipeForm.value)
-      this._recipeService.createRecipe(recipe)
+    if (!this.editRecipe) {
+      const recipe = this.mapperFunction(this.recipeForm.value);
+      this._recipeService.createRecipe(recipe);
       this.router.navigate(['/recipes']);
     } else {
-      let recipe = this.mapperFunction(this.recipeForm.value)
+      const recipe = this.mapperFunction(this.recipeForm.value);
       const id = this.route.snapshot.paramMap.get('id');
-      this._recipeService.updateRecipe(id, recipe)
+      this._recipeService.updateRecipe(id, recipe);
       this.router.navigate(['/recipes']);
     }
   }
@@ -101,7 +105,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   mapperFunction(obj): any {
-    let newObj: any = {};
+    const newObj: any = {};
      newObj.date = new Date();
      newObj.title = obj.formTitle;
      newObj.imagePath = obj.formPicture;
@@ -109,7 +113,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
      newObj.description = obj.formLongDescription;
      newObj.personalNotes = obj.formNotes;
      newObj.instructions = obj.formInstructions;
-     newObj.ingredientsList = obj.formIngredientList.map((el) => el.list)
+     newObj.ingredientsList = obj.formIngredientList.map((el) => el.list);
     return newObj;
   }
 }

@@ -13,3 +13,24 @@
 textarea, div, blockquote {
   white-space: pre-wrap;
 }
+
+.field{
+  margin-bottom: 5px;
+}
+
+.bulleit {
+  margin-right: 5px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  margin-right: 5px
+}
+
+.field {
+  margin-bottom: 8px;
+}
