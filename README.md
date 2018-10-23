@@ -20,15 +20,15 @@
 [] add icons by links??
 
 ##### Firebase Stuff:
+[✓] [✓] [✓] [✓] CRUD recipes  
 [✓] add real data  
+[✓] create form for recipes  
 [] create user  
 [] create sign in  
-[✓] create form for recipes  
 [] create auth and firebase  
-[] [] [] [] CRUD journal stuff  
-[✓] [✓] [✓] [✓] CRUD recipes  
 [] post pictures from phone  
 [] store picture in firebase bucket  
 [] upload photos from phone  
+[] [] [] [] CRUD journal stuff  
 
 ---
