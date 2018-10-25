@@ -81,7 +81,7 @@
                 <div class="bulleit is-inline-block">
                   <input
                     class="input"
-                    [ngClass]="{'is-danger': formIngredient?.controls?.formINgredientList?.valid }"
+                    [class.is-danger]="formIngredient.invalid"
                     type="text"
                     formControlName="list"
                     required

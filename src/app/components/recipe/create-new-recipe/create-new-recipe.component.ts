@@ -12,11 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
-  @Input() editRecipe: any;
   recipeForm: any;
   list: string[];
   selectedFile: any;
   editable: any;
+  @Input() editRecipe: any;
   @ViewChild('ingredientList') input;
 
   constructor(
@@ -37,7 +37,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.editRecipe, 'RECIPE');
+    this.dynamicListCreationForEdit();
   }
 
   initializeCreateMode() {
@@ -90,17 +90,29 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
     if (!this.editRecipe) {
       const recipe = this.mapperFunction(this.recipeForm.value);
       this._recipeService.createRecipe(recipe);
-      this.router.navigate(['/recipes']);
     } else {
       const recipe = this.mapperFunction(this.recipeForm.value);
       const id = this.route.snapshot.paramMap.get('id');
       this._recipeService.updateRecipe(id, recipe);
-      this.router.navigate(['/recipes']);
     }
+    this.router.navigate(['/recipes']);
   }
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+  }
+
+  dynamicListCreationForEdit() {
+    // refactor so we dont have to start with the createditIngredienlist method having a hardcoded value
+    const ray = this.editable.ingredientsList;
+    if (ray && this.recipeForm) {
+      setTimeout(() => {
+        const control = <FormArray>this.recipeForm.controls['formIngredientList'];
+        for (let i = 1; i < ray.length; i++) {
+          control.push(this._fb.group({ list: ray[i] }));
+        }
+      });
+    }
   }
 
   mapperFunction(obj): any {
