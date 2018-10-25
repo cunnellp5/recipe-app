@@ -47,13 +47,13 @@ export class RecipeService {
   }
 
   updateIngredientsList(recipe): void {
-    if(!recipe) return;
+    if (!recipe) { return; }
     const ingredientsList = {ingredientsList: ['sugar', 'veal', 'poop']};
     this.recipeRef.doc(recipe).update(ingredientsList).then(() => {
-          console.log('Document successfully updated ingredient list!');
+        console.log('Document successfully updated ingredient list!');
       })
       .catch((error) => {
-          console.error('Error removing document: ', error);
+        console.error('Error removing document: ', error);
       });
   }
 

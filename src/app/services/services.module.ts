@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RecipeService } from './recipe.service';
+import { UserService } from './user.service';
 
 @NgModule({})
 
@@ -8,8 +9,9 @@ export class ServiceModule {
     return {
       ngModule: ServiceModule,
       providers: [ // put other services in this array
-        RecipeService
+        RecipeService,
+        UserService
       ]
-    }
+    };
   }
 }
