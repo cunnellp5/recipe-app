@@ -86,7 +86,6 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
     this.inputList.removeAt(index);
   }
 
-
   onFormSubmit() {
     if (!this.editRecipe) {
       const recipe = this.mapperFunction(this.recipeForm.value);
