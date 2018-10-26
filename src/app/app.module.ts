@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
-// import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -36,7 +38,9 @@ import { ServiceModule } from './services/services.module';
     AppRoutingModule,
     RecipeModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     ServiceModule.forRoot()
   ],
   providers: [],

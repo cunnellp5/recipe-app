@@ -16,6 +16,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   list: string[];
   selectedFile: any;
   editable: any;
+  createMode: boolean;
   @Input() editRecipe: any;
   @ViewChild('ingredientList') input;
 
@@ -41,6 +42,7 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   initializeCreateMode() {
+    this.createMode = true;
     this.recipeForm = this._fb.group({
       formTitle: [''],
       formPicture: [''],
@@ -104,8 +106,8 @@ export class CreateNewRecipeComponent implements OnInit, AfterViewInit {
 
   dynamicListCreationForEdit() {
     // refactor so we dont have to start with the createditIngredienlist method having a hardcoded value
-    const ray = this.editable.ingredientsList;
-    if (ray && this.recipeForm) {
+    if (this.recipeForm && !this.createMode) {
+      const ray = this.editable.ingredientsList;
       setTimeout(() => {
         const control = <FormArray>this.recipeForm.controls['formIngredientList'];
         for (let i = 1; i < ray.length; i++) {

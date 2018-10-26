@@ -1,3 +1,13 @@
+<div *ngIf="user.uid | async as uid; else login">
+  this user is logged in. {{uid}}
+  <div *ngIf="user.isAdmin | async">this user has admin powers</div>
+  <div><button (click)="user.logout()">Logout</button></div>
+</div>
+<ng-template #login>
+  you need to login: <button (click)="user.login()">Login</button>
+</ng-template>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 <div class="is-fluid container">
   <div class="columns is-multiline">
     <!-- ngFor HERE -->
@@ -5,7 +15,6 @@
       class="container column is-one-quarter"
       *ngFor="let recipe of recipes">
       <div class="card is-centered">
-
         <div class="card-content">
           <a routerLink="/recipes/{{ recipe.id }}">
             <div class="media">

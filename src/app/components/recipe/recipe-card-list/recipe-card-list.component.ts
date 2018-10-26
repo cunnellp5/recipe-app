@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
+import { UserService } from '../../../services/user.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class RecipeCardListComponent implements OnInit {
 
   constructor(
     private _recipeService: RecipeService,
-    private router: Router
+    private router: Router,
+    public user: UserService
   ) {}
 
   ngOnInit() {
