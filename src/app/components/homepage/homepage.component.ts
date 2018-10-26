@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
   isModalActive: boolean;
   birthdayModal: boolean;
-  constructor() { }
+  constructor(public user: UserService) { }
 
   ngOnInit() {
     this.isModalActive = !this.isModalActive;

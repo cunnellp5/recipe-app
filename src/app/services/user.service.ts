@@ -15,11 +15,7 @@ export class UserService {
 
   uid = this.afAuth.authState.pipe(
     map(authState => {
-      if(!authState) {
-        return null;
-      } else {
-        return authState.uid
-      }
+      return !authState ? null : authState.uid;
     }),
   );
 
@@ -28,7 +24,7 @@ export class UserService {
       if(!uid) {
         return observableOf(false);
       } else {
-        return this.db.object<boolean>('/admin/' + uid).valueChanges()
+        return this.db.object<boolean>('/admin/' + uid).valueChanges();
       }
     })
   )

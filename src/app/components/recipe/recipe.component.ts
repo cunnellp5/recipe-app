@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-recipe',
@@ -14,7 +15,8 @@ export class RecipeComponent implements OnInit {
   recipes: Observable<Recipe[]>;
 
   constructor(
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    public user: UserService
   ) { }
 
   ngOnInit() {
