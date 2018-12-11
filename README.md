@@ -37,8 +37,8 @@
 login / router guard:
 https://www.youtube.com/watch?v=e8GA1UOj8mE&list=PL0vfts4VzfNg7nTsEkiWCCNB8BvoZcPz4
 
-signin:
-https://www.youtube.com/watch?v=e8GA1UOj8mE&list=PL0vfts4VzfNg7nTsEkiWCCNB8BvoZcPz4&index=1
+connect user to data:
+https://www.youtube.com/watch?v=2ciHixbc4HE&index=9&list=PL0vfts4VzfNg7nTsEkiWCCNB8BvoZcPz4
 
 ### notes
 based on AngularFire v5
