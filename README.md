@@ -32,3 +32,13 @@
 [] [] [] [] CRUD journal stuff  
 
 ---
+
+# resources
+login / router guard:
+https://www.youtube.com/watch?v=e8GA1UOj8mE&list=PL0vfts4VzfNg7nTsEkiWCCNB8BvoZcPz4
+
+signin:
+https://www.youtube.com/watch?v=e8GA1UOj8mE&list=PL0vfts4VzfNg7nTsEkiWCCNB8BvoZcPz4&index=1
+
+### notes
+based on AngularFire v5
