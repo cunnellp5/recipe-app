@@ -3,7 +3,14 @@
     <div class="container">
       <h1 class="title">
         Recipes
-        <div class="is-pulled-right">
+        <div class="is-pulled-right buttons">
+          <button
+            class="button is-success is-outlined button-padding-horizontal"
+            type="button"
+            name="button">
+            <!-- <i class="fa fa-sign-in-alt" aria-hidden="true"></i>&nbsp; -->
+            Sign in
+          </button>
           <div *ngIf="user.uid | async as uid; else login">
             <button
               class="button is-warning"
@@ -40,37 +47,16 @@
 <div class="columns is-gapless">
   <div class="column">
     <a routerLink="/recipes" routerLinkActive="active">
-      <figure class="image is-square">
-        <img class="radius" src="http://weclipart.com/gimg/66D21606EC93CE9D/il_fullxfull.720407533_cfek.jpg">
+      <figure class="image is-5by3">
+        <img class="radius" src="../../assets/images/recipes.jpg">
       </figure>
     </a>
   </div>
   <div class="column">
     <a routerLink="/blog" routerLinkActive="active">
-      <figure class="image is-square">
-        <img class="radius2" src="https://energyflows.org/wp-content/uploads/2017/11/5-minute-journal-main-pic.jpg">
+      <figure class="image is-5by3">
+        <img class="radius2" src="../../assets/images/journal.jpg">
       </figure>
     </a>
-  </div>
-</div>
-
-<div *ngIf="birthdayModal" class="modal" [ngClass]="{ 'is-active' : isModalActive }">
-  <div class="modal-background" (click)="toggleModal()"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Happy Birthday Laura-Jeanne 💝</p>
-      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-      Happy Birthday! 🎁🎂🎉✨💖
-      <iframe src="https://giphy.com/embed/3o6gbbbGbpBZCRm15C" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/birthday-happy-birthday-hump-humpy-birfday-3o6gbbbGbpBZCRm15C"></a></p>
-      I hope you have a great day today, i miss you! May your heart be filled with happiness and goodness I wish i could give you a big hug right now.
-      I love you <br>- Philip
-    </section>
-    <footer class="modal-card-foot">
-      <!-- <button class="button is-success">Save changes</button> -->
-      <button class="button" (click)="toggleModal()">Cancel</button>
-    </footer>
   </div>
 </div>

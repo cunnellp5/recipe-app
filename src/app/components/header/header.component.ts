@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,16 @@ export class HeaderComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
 
-  constructor() { }
+  constructor(
+    private el: ElementRef
+  ) { }
+
+  onMouseEnter(event: MouseEvent) {
+    const elem = this.el.nativeElement;
+    const linkCoords = elem.getBoundingClientRect();
+
+    console.log(this.el.nativeElement);
+  }
 
   ngOnInit() {
   }
