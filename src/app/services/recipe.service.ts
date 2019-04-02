@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'rxjs';
@@ -12,9 +13,18 @@ export class RecipeService {
   recipeRef: any;
   id: string;
   recipe: any;
+  userId: string;
 
-  constructor(private db: AngularFirestore) {
+  constructor(
+    private db: AngularFirestore,
+    private afAuth: AngularFireAuth
+    ) {
     this.recipeRef = this.db.collection('recipeDetails');
+    this.afAuth.authState.subscribe(user => {
+      if (user) { 
+        this.userId = user.uid;
+      }
+    });
   }
 
   getRecipes(): any {

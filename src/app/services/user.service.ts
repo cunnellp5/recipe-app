@@ -22,7 +22,8 @@ export class UserService {
     private db: AngularFireDatabase,
     private afs: AngularFirestore
   ) {
-    // get auth data, then get firestore user document || null
+
+    // get auth data, then get firestore user document || null > tells us when user isnt logged in
     this.user = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -54,6 +55,7 @@ export class UserService {
   login() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
+
   logout() {
     this.afAuth.auth.signOut();
   }
@@ -61,6 +63,12 @@ export class UserService {
   googleLogin() {
     const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
+  }
+
+  async googleSignin() {
+    const provider = new auth.GoogleAuthProvider();
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
+    return this.updateUserData(credential.user);
   }
 
   private oAuthLogin(provider) {
@@ -78,6 +86,6 @@ export class UserService {
       uid: user.uid,
       email: user.email
     };
-    return userRef.set(data);
+    return userRef.set(data, { merge: true });
   }
 }

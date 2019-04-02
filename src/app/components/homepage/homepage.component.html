@@ -4,13 +4,7 @@
       <h1 class="title">
         Recipes
         <div class="is-pulled-right buttons">
-          <button
-            class="button is-success is-outlined button-padding-horizontal"
-            type="button"
-            name="button">
-            <!-- <i class="fa fa-sign-in-alt" aria-hidden="true"></i>&nbsp; -->
-            Sign in
-          </button>
+
           <div *ngIf="user.uid | async as uid; else login">
             <button
               class="button is-warning"
@@ -22,6 +16,14 @@
             </button>
           </div>
           <ng-template #login>
+            <button
+              class="button is-success is-outlined button-padding-horizontal"
+              type="button"
+              (click)="user.googleSignin()"
+              name="button">
+              <!-- <i class="fa fa-sign-in-alt" aria-hidden="true"></i>&nbsp; -->
+              Sign up
+            </button>
             <button
               class="button is-info"
               type="button"

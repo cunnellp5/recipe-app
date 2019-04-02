@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="title">
         Just the recipes
-        <div *ngIf="user.isAdmin | async" class="is-pulled-right">
+        <div *ngIf="user.uid | async" class="is-pulled-right">
           <button
             class="is-medium button is-primary is-small"
             routerLink="/create"

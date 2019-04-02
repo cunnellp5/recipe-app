@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -7,30 +7,6 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./homepage.component.css']
 })
 
-export class HomepageComponent implements OnInit {
-  isModalActive: boolean;
-  birthdayModal: boolean;
+export class HomepageComponent  {
   constructor(public user: UserService) { }
-
-  ngOnInit() {
-    this.isModalActive = !this.isModalActive;
-    this.birthDayCheck();
-  }
-
-  toggleModal() {
-    this.isModalActive = !this.isModalActive;
-  }
-
-  birthDayCheck() {
-    let year = new Date().getUTCFullYear();
-    let birthday = new Date(`September 3 ${year}`);
-    let month = new Date().getMonth();
-    let day = new Date().getDay();
-    if(month === birthday.getMonth() && day === birthday.getDay()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
 }
